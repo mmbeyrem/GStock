@@ -33,7 +33,7 @@ private slots:
 private:
     Ui::CommonView *ui;
     IModels *Model;
-    CommonEntityDiag *entity;
+    CommonEntityDiag *EntityDiag;
 };
 
 #endif // DIALOGCOMMONVIEW_H

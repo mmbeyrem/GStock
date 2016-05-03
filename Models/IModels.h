@@ -15,6 +15,7 @@ protected :
 public:
     virtual ~IModels(){}
     virtual  IModels* Clone(QString Name,QWidget *parent , QSqlDatabase& db)=0;
+    virtual  IEntities* CloneEntity()=0;
 public slots:
 
     virtual QList<IEntities*>* GetAll()=0;

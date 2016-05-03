@@ -8,16 +8,12 @@ CommonReaderModel::CommonReaderModel(QSqlQueryModel *oModel)
 }
 QList<QSqlRecord *>* CommonReaderModel::GetAll()
 {
-    int i=0;
     QSqlRecord oRec;
     QList<QSqlRecord*> *oList = new QList<QSqlRecord*> ();
-    while ( true )
+    for (int i = 0; i< oModel->rowCount(); i++)
     {
         oRec = oModel->record(i);
-        if (oRec.isEmpty())
-            break;
         oList->append(new QSqlRecord(oRec));
-        i++;
     }
     return oList;
 }
@@ -38,7 +34,13 @@ bool CommonWriterModel::Add(QSqlRecord * const oRec)
     qInfo()<<"insert into db";
     bool dbr= static_cast<QSqlTableModel*>(oModel)->insertRecord(-1,*oRec);
     if (dbr)
-        static_cast<QSqlTableModel*>(oModel)->submitAll()  ;
+    {
+        if (static_cast<QSqlTableModel*>(oModel)->submitAll())
+        {
+             qDebug()<<oModel->lastError();
+             return false;
+        }
+    }
     else
         qDebug()<< oModel->lastError();
 

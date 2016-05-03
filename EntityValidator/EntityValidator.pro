@@ -12,11 +12,9 @@ TARGET = EntityValidator
 TEMPLATE = lib
 CONFIG += staticlib
 
-SOURCES += \
-    CategoryValidator.cpp
+SOURCES +=
 
-HEADERS += IEntityValidator.h \
-    CategoryValidator.h
+HEADERS += IEntityValidator.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

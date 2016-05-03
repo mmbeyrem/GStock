@@ -124,3 +124,8 @@ IModels* CategoryModels::Clone(QString Name,QWidget *parent , QSqlDatabase &db)
     qInfo()<<"db:"<<db.databaseName()<<" status:"<<db.isOpen();
     return new CategoryModels(Name,(QObject*)parent,db);
 }
+
+IEntities *CategoryModels::CloneEntity()
+{
+    return new CategoryEntities();
+}

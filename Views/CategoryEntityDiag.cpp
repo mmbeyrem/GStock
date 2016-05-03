@@ -115,17 +115,20 @@ void CategoryEntityDiag::Delete(int row)
 }
 bool CategoryEntityDiag::Validate()
 {
-    ColumnCondition oCond;
-    oCond.Add("Name",Name->text());
-    QList<IEntities *> *oList = this->Model->Find(oCond);
-    if ( oList != nullptr && oList->count()>0)
+    if (iRow<0)
     {
-         ui->listWidget->addItem(tr("this Name is already exist"));
-         foreach (IEntities *bj , *oList) {
-                 delete bj;
-         }
-         delete oList;
-         return true;
+        ColumnCondition oCond;
+        oCond.Add("Name",Name->text());
+        QList<IEntities *> *oList = this->Model->Find(oCond);
+        if ( oList != nullptr && oList->count()>0)
+        {
+             ui->listWidget->addItem(tr("this Name is already exist"));
+             foreach (IEntities *bj , *oList) {
+                     delete bj;
+             }
+             delete oList;
+             return true;
+        }
     }
     return false;
 }

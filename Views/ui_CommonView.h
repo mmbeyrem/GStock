@@ -41,6 +41,7 @@ public:
     QPushButton *InsetB;
     QPushButton *UpdateB;
     QPushButton *DeleteB;
+    QSpacerItem *verticalSpacer;
     QPushButton *ExportB;
     QPushButton *ImportB;
     QVBoxLayout *verticalLayout_5;
@@ -92,6 +93,10 @@ public:
 
         verticalLayout_6->addWidget(DeleteB);
 
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_6->addItem(verticalSpacer);
+
         ExportB = new QPushButton(groupBox);
         ExportB->setObjectName(QStringLiteral("ExportB"));
 
@@ -135,7 +140,7 @@ public:
         tableView->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
         tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tableView->horizontalHeader()->setStretchLastSection(true);
-        tableView->verticalHeader()->setVisible(false);
+        tableView->verticalHeader()->setVisible(true);
 
         verticalLayout_5->addWidget(tableView);
 

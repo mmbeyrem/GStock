@@ -11,6 +11,9 @@ public:
     QString Name;
     float Tva;
     QString Specific;
+
+    virtual QString tocsv(QChar = ';');
+    virtual void fromcsv(QString val, QChar = ';');
 };
 
 #endif // CATEGORYENTITIES_H

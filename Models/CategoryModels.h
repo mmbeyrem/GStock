@@ -12,6 +12,7 @@ public:
     CategoryModels(){}
     CategoryModels(QString Name, QObject *parent = Q_NULLPTR, QSqlDatabase &db = QSqlDatabase());
     virtual IModels* Clone(QString Name, QWidget *parent , QSqlDatabase &db);
+    virtual  IEntities* CloneEntity();
     virtual QList<IEntities *> *GetAll();
     virtual IEntities* Get(int key);
     virtual int Update(int row ,IEntities*);
