@@ -86,6 +86,8 @@ int CategoryModels::Add(IEntities *oCategoryEntitty)
         oRec->setValue("Tva",oCat->Tva);
         if (oCommonModel->Add(oRec))
             emit this->dataChanged(QModelIndex(),QModelIndex());
+        else
+            return 0;
         return 1;
     }
     qDebug()<<"erro when converting a Category Entites";

@@ -121,6 +121,7 @@ void CommonView::on_ImportB_clicked()
           IEntities * obj = this->Model->CloneEntity();
           obj->fromcsv(oFile.readLine());
           this->Model->Add(obj);
+
           delete obj;
       }
 }

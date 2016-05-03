@@ -35,9 +35,10 @@ bool CommonWriterModel::Add(QSqlRecord * const oRec)
     bool dbr= static_cast<QSqlTableModel*>(oModel)->insertRecord(-1,*oRec);
     if (dbr)
     {
-        if (static_cast<QSqlTableModel*>(oModel)->submitAll())
+        if (!static_cast<QSqlTableModel*>(oModel)->submitAll())
         {
              qDebug()<<oModel->lastError();
+             static_cast<QSqlTableModel*>(oModel)->revertAll();
              return false;
         }
     }
