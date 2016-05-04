@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include<QSqlError>
+#include<QSettings>
 DBMigration::DBMigration(QSqlDatabase &db)
 {
     this->db  = db;
@@ -30,5 +31,7 @@ int DBMigration::run()
             return -1;
         }
     }
+    QSettings settings;
+    settings.setValue("dbv",oFile.fileName());
     return 0;
 }
