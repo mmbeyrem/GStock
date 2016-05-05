@@ -9,6 +9,9 @@
 #include<QFileDialog>
 #include<QMessageBox>
 #include<QDateTime>
+#include "ViewDelegatesFactory.h"
+
+
 CommonView::CommonView(QString titre,QSqlDatabase &db, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CommonView)
@@ -19,6 +22,8 @@ CommonView::CommonView(QString titre,QSqlDatabase &db, QWidget *parent) :
     this->Model = ModelFactory::Get(titre,db,this);
     ui->tableView->setModel(Model);
     ui->tableView->hideColumn(0);
+    ViewDelegates * obj = ViewDelegatesFactory::Get(titre,(QObject *)this);
+    ui->tableView->setItemDelegate(obj);
 
     this->EntityDiag = EntityDiagFactory::Get(titre,this);
     connect(EntityDiag,SIGNAL(add(IEntities*)),Model,SLOT(Add(IEntities*)));

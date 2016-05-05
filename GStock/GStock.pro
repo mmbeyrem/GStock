@@ -52,3 +52,14 @@ win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../Views/r
 else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../Views/debug/libViews.a
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../Views/release/Views.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../Views/debug/Views.lib
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../ViewDelegates/release/ -lViewDelegates
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ViewDelegates/debug/ -lViewDelegates
+
+INCLUDEPATH += $$PWD/../ViewDelegates
+DEPENDPATH += $$PWD/../ViewDelegates
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../ViewDelegates/release/libViewDelegates.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../ViewDelegates/debug/libViewDelegates.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../ViewDelegates/release/ViewDelegates.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../ViewDelegates/debug/ViewDelegates.lib
