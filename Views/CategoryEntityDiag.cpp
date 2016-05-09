@@ -12,6 +12,7 @@ CategoryEntityDiag::CategoryEntityDiag(QWidget *parent, QSqlDatabase &db):Common
     Name = new QLineEdit(this);
    // Name->setValidator(new QRegularExpressionValidator(QRegularExpression("^[A-Z]"),this) );
     Name->setToolTip(tr("Name should start with lettre"));
+    Name->setValidator(new QRegExpValidator (QRegExp("^([a-zA-Z])+"), this));
     Tva = new QLineEdit(this);
     Tva->setValidator(new QDoubleValidator(0.,200.,2,this) );
     Tva->setToolTip(tr("tva should be a nositif value with decimal after '.'"));

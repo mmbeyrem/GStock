@@ -8,11 +8,14 @@ ClientEntityDiag::ClientEntityDiag(QWidget *parent, QSqlDatabase &db):CommonEnti
     FirstName = new QLineEdit(this);
    // Name->setValidator(new QRegularExpressionValidator(QRegularExpression("^[A-Z]"),this) );
     FirstName->setToolTip(tr("First name should start with lettre"));
+    FirstName->setValidator(new QRegExpValidator (QRegExp("^([a-zA-Z])+"), this));
     lastName = new QLineEdit(this);
 
     lastName->setToolTip(tr("Last name should start with lettre"));
+    lastName->setValidator(new QRegExpValidator (QRegExp("^([a-zA-Z])+"), this));
     Email = new QLineEdit(this);
-
+    Email->setValidator(new QRegExpValidator (QRegExp("^[a-zA-Z](\\d|\\D)*@[a-zA-Z].[a-zA-Z]"), this));
+    Email->setToolTip(tr("Email format xxx@yyyy.zzz"));
     this->ui->formLayout->addRow(tr("FirstName"),FirstName);
 
     this->ui->formLayout->addRow(tr("lastName"),lastName);
@@ -27,6 +30,22 @@ ClientEntityDiag::ClientEntityDiag(QWidget *parent, QSqlDatabase &db):CommonEnti
 
 bool ClientEntityDiag::Validate()
 {
+    if (iRow<0)
+    {
+        ColumnCondition oCond;
+        oCond.Add("FirstName",FirstName->text());
+         oCond.Add("lastName",lastName->text());
+        QList<IEntities *> *oList = this->Model->Find(oCond);
+        if ( oList != nullptr && oList->count()>0)
+        {
+             ui->listWidget->addItem(tr("this Name is already exist"));
+             foreach (IEntities *bj , *oList) {
+                     delete bj;
+             }
+             delete oList;
+             return true;
+        }
+    }
     return false;
 }
 void ClientEntityDiag::accept()
