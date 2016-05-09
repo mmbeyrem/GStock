@@ -17,14 +17,16 @@ SOURCES += CommonModel.cpp \
     CategoryModels.cpp \
     ColumnCondition.cpp \
     ModelFactory.cpp \
-    ModelResearch.cpp
+    ModelResearch.cpp \
+    ClientModels.cpp
 
 HEADERS += CommonModel.h \
     CategoryModels.h \
     ColumnCondition.h \
     IModels.h \
     ModelFactory.h \
-    ModelResearch.h
+    ModelResearch.h \
+    ClientModels.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

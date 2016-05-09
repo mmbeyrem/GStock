@@ -16,14 +16,16 @@ SOURCES += \
     CategoryEntityDiag.cpp \
     CommonEntityDiag.cpp \
     CommonView.cpp \
-    EntityDiagFactory.cpp
+    EntityDiagFactory.cpp \
+    ClientEntityDiag.cpp
 
 HEADERS += \
     CategoryEntityDiag.h \
     CommonEntityDiag.h \
     CommonView.h \
     EntityDiagFactory.h \
-    IValidate.h
+    IValidate.h \
+    ClientEntityDiag.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

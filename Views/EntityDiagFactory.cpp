@@ -1,5 +1,6 @@
 #include "EntityDiagFactory.h"
 #include"categoryentitydiag.h"
+#include"ClientEntityDiag.h"
 #include<QException>
 #include<QDebug>
 EntityDiagFactory* EntityDiagFactory:: EntityDiagFactory_ = nullptr;
@@ -8,6 +9,7 @@ EntityDiagFactory* EntityDiagFactory:: EntityDiagFactory_ = nullptr;
 EntityDiagFactory::EntityDiagFactory()
 {
     oAvailEntityDiag["Category"]= new CategoryEntityDiag();
+    oAvailEntityDiag["Client"]= new ClientEntityDiag();
 }
 
 CommonEntityDiag *EntityDiagFactory::Get(QString DiagName,QWidget *parent,QSqlDatabase &db)

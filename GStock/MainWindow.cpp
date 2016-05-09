@@ -15,10 +15,16 @@ MainWindow::MainWindow(QSqlDatabase &db,QWidget *parent) :
     ui->statusBar->addPermanentWidget(UserLabel);
     ui->statusBar->addPermanentWidget(ConnextionDate);
     this->db = db;
-    CommonViews.append(new CommonView ("Category",db,this));
-
-    oActions.append(ui->mainToolBar->addAction(tr("Category")));
-    connect(oActions.last(), SIGNAL(triggered(bool)),CommonViews.last(),SLOT(show()));
+    {
+        CommonViews.append(new CommonView ("Category",db,this));
+        oActions.append(ui->mainToolBar->addAction(tr("Category")));
+        connect(oActions.last(), SIGNAL(triggered(bool)),CommonViews.last(),SLOT(show()));
+    }
+    {
+        CommonViews.append(new CommonView ("Client",db,this));
+        oActions.append(ui->mainToolBar->addAction(tr("Client")));
+        connect(oActions.last(), SIGNAL(triggered(bool)),CommonViews.last(),SLOT(show()));
+    }
 }
 
 MainWindow::~MainWindow()

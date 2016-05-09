@@ -19,6 +19,7 @@ class CommonEntityDiag : public QDialog,IValidate
 public:
     explicit CommonEntityDiag(QWidget *parent = 0);
     virtual CommonEntityDiag* Clone(QWidget *parent= 0,QSqlDatabase &db=QSqlDatabase())=0;
+    void accept()=0;
 public slots:
     virtual void insert()=0;
     virtual void Delete(int )=0;

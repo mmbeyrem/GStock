@@ -2,12 +2,13 @@
 #include<QDebug>
 #include "ModelFactory.h"
 #include"CategoryModels.h"
-
+#include"ClientModels.h"
 ModelFactory* ModelFactory:: ModelFactory_ = nullptr;
 
 ModelFactory::ModelFactory()
 {
  oAvailModels["Category"]= new CategoryModels();
+  oAvailModels["Client"]= new ClientModels();
 }
 
 IModels* ModelFactory::Get(QString Name, QSqlDatabase & db, QWidget *parent)

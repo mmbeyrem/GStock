@@ -4,13 +4,20 @@
 #
 #-------------------------------------------------
 
+QT       += gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 TARGET = ViewDelegates
 TEMPLATE = lib
 CONFIG += staticlib
 
-SOURCES += ViewDelegatesFactory.cpp
-
-HEADERS += ViewDelegatesFactory.h
+SOURCES += ViewDelegatesFactory.cpp \
+           CategoryViewDelegate.cpp \
+    ClientViewDelegate.cpp
+HEADERS += ViewDelegatesFactory.h \
+           CategoryViewDelegate.h \
+           ViewDelegates.h \
+    ClientViewDelegate.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
